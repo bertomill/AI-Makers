@@ -50,6 +50,65 @@ function TitleSlide() {
   );
 }
 
+function AboutMakersLoungeSlide() {
+  return (
+    <SlideLayout>
+      <Tag>Who We Are</Tag>
+      <h2 className="max-w-3xl text-balance text-center text-5xl font-semibold leading-tight tracking-tight text-foreground">
+        MakersLounge
+      </h2>
+      <p className="mt-4 max-w-2xl text-balance text-center text-xl leading-relaxed text-muted-foreground">
+        Passionate people can change the world. {"We're"} here to enable them through community.
+      </p>
+      <div className="mt-10 grid max-w-4xl grid-cols-[1fr_1fr] gap-8">
+        <div className="overflow-hidden rounded-xl border border-border">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/makerslounge-community.png"
+            alt="MakersLounge community at a meetup"
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <div className="flex flex-col justify-center gap-4">
+          {[
+            {
+              title: "Everyone belongs here",
+              desc: "First project or fiftieth — your experience level doesn't matter.",
+            },
+            {
+              title: "No gatekeeping",
+              desc: "If you're curious and want to create, you're one of us.",
+            },
+            {
+              title: "Share early, share often",
+              desc: "Your half-baked idea deserves to see the light.",
+            },
+            {
+              title: "Real connections",
+              desc: "We're about finding people you genuinely want to build with.",
+            },
+          ].map((item) => (
+            <div key={item.title} className="flex items-start gap-3">
+              <div className="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent" />
+              <div>
+                <span className="font-semibold text-card-foreground">{item.title}</span>
+                <span className="ml-1 text-sm text-muted-foreground">{item.desc}</span>
+              </div>
+            </div>
+          ))}
+          <div className="mt-2 flex items-center gap-4 text-sm text-muted-foreground">
+            <span>500+ members</span>
+            <span className="h-1 w-1 rounded-full bg-muted-foreground" />
+            <span>Toronto-based</span>
+            <span className="h-1 w-1 rounded-full bg-muted-foreground" />
+            <span>Founded by Berto & Katy</span>
+          </div>
+        </div>
+      </div>
+    </SlideLayout>
+  );
+}
+
 function WelcomeSlide() {
   return (
     <SlideLayout>
@@ -193,6 +252,62 @@ function WhatIsV0Slide() {
   );
 }
 
+function BranchingSlide() {
+  return (
+    <SlideLayout>
+      <Tag>Git & v0</Tag>
+      <h2 className="max-w-3xl text-balance text-center text-5xl font-semibold leading-tight tracking-tight text-foreground">
+        Branching in v0
+      </h2>
+      <p className="mt-6 max-w-2xl text-balance text-center text-xl leading-relaxed text-muted-foreground">
+        v0 connects to GitHub and makes branching effortless — no terminal needed.
+      </p>
+      <div className="mt-10 grid max-w-4xl grid-cols-2 gap-8">
+        <div className="flex flex-col gap-4">
+          <h3 className="text-lg font-semibold text-card-foreground">
+            What are branches?
+          </h3>
+          <div className="flex flex-col gap-3">
+            {[
+              ["Parallel versions", "A branch is a separate copy of your project where you can make changes without affecting the original."],
+              ["Safe experimentation", "Try new ideas freely. If it doesn't work, your main code is untouched."],
+              ["main = your source of truth", "The main branch is your stable, working version. Everything else branches off from it."],
+            ].map(([title, desc]) => (
+              <div
+                key={title}
+                className="rounded-lg border border-border bg-card px-5 py-3"
+              >
+                <span className="font-semibold text-card-foreground">{title}</span>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-col gap-4">
+          <h3 className="text-lg font-semibold text-card-foreground">
+            How v0 makes it easy
+          </h3>
+          <div className="flex flex-col gap-3">
+            {[
+              ["Auto-creates branches", "Every v0 chat creates its own branch automatically — no git commands needed."],
+              ["One-click PRs", "When you're happy with your changes, hit \"Open PR\" to merge them back to main."],
+              ["Visual diffing", "See exactly what changed before you merge. No surprises."],
+            ].map(([title, desc]) => (
+              <div
+                key={title}
+                className="rounded-lg border border-accent/20 bg-accent/5 px-5 py-3"
+              >
+                <span className="font-semibold text-card-foreground">{title}</span>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </SlideLayout>
+  );
+}
+
 function V0TipsSlide() {
   return (
     <SlideLayout>
@@ -248,7 +363,18 @@ function BuildTimeSlide() {
       <p className="mt-6 max-w-2xl text-balance text-center text-xl leading-relaxed text-muted-foreground">
         You have 55 minutes and $30 in v0 credits. Build something that excites you.
       </p>
-      <div className="mt-10 max-w-2xl">
+      <div className="mt-8 flex flex-col items-center rounded-xl border-2 border-accent bg-accent/5 px-8 py-5">
+        <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
+          Redeem your v0 credits
+        </p>
+        <code className="mt-2 text-3xl font-bold tracking-wider text-accent">
+          AI-MAKERS-V0-1
+        </code>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Enter this code at v0.dev to claim your 30 free credits
+        </p>
+      </div>
+      <div className="mt-8 max-w-2xl">
         <p className="mb-4 text-center text-sm font-medium uppercase tracking-widest text-muted-foreground">
           Need inspiration? Try one of these:
         </p>
@@ -339,10 +465,12 @@ function WrapUpSlide() {
 
 export const slides: SlideData[] = [
   { id: "title", content: <TitleSlide /> },
+  { id: "about-makerslounge", content: <AboutMakersLoungeSlide /> },
   { id: "welcome", content: <WelcomeSlide /> },
   { id: "participation", content: <ParticipationSlide /> },
   { id: "ai-state", content: <AIStateSlide /> },
   { id: "what-is-v0", content: <WhatIsV0Slide /> },
+  { id: "branching", content: <BranchingSlide /> },
   { id: "v0-tips", content: <V0TipsSlide /> },
   { id: "build-time", content: <BuildTimeSlide /> },
   { id: "show-and-tell", content: <ShowAndTellSlide /> },
